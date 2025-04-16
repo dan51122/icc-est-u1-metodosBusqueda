@@ -1,7 +1,7 @@
-
 import controllers.MetodosBusqueda;
 import models.Person;
 import views.showConsole;
+import controllers.MetodosBusquedaBinaria;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -19,6 +19,9 @@ public class App {
 
     
         MetodosBusqueda mB = new MetodosBusqueda(personas);
+        MetodosBusquedaBinaria mBB = new MetodosBusquedaBinaria(personas);
+
+        mBB.showPersonByName();
         int codigoBuscar = 103;
         int resultado = mB.findPersonByCode(codigoBuscar);
         showConsole console = new showConsole(); 
@@ -30,6 +33,17 @@ public class App {
         }
         
 
+
+
+
+        MetodosBusqueda metodosBusqueda = new MetodosBusqueda();
+        int [] arreglo = {2, 4, 6, 8, 9, 3, 4, 6, 1};
+        int valor = 6;
+        int resultado = metodosBusqueda.busquedaLineal(arreglo, valor);
+        if(resultado>0){
+            System.out.println("El numero " + valor + ", esta en la posición " + resultado);
+        } else;
+        System.out.println(" el numero no esta en la lista :(");
 
     }
 }
