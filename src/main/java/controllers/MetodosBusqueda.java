@@ -1,22 +1,11 @@
 package controllers;
-
-
 import models.Person;
 import views.showConsole;
 
 public class MetodosBusqueda {
 
     private Person[] people;
-
     private showConsole console;
-
-
-
-
-
-
-    
-
 
     public MetodosBusqueda(Person[] people, showConsole console) {
         this.people = people;
@@ -38,7 +27,6 @@ public class MetodosBusqueda {
         return -1;
     }
 
-
     public int findPersonByCode(int code) {
         for (int i = 0; i < people.length; i++) {
             if (people[i].getCode() == code) {
@@ -57,9 +45,7 @@ public class MetodosBusqueda {
             console.showMessage(people[indexPerson].toString());
         }else{
             console.showMessage("Persona no encontrada");
-
         }
-
     }
 
     

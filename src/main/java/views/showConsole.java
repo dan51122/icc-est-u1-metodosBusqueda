@@ -16,11 +16,17 @@ public class showConsole {
     public int inputCode(){
         System.out.println("Ingrese un codigo");
         int code = scanner.nextInt();
+        scanner.nextLine(); // Consume la nueva línea que deja nextInt()
         return code;
+    }
+
+    public String inputName(){
+        System.out.println("Ingrese un nombre");
+        String name = scanner.nextLine();
+        return name;
     }
 
     public void showMessage(String message){
         System.out.println(message);
     }
-    
 }

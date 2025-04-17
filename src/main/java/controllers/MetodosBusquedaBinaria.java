@@ -1,11 +1,15 @@
 package controllers;
+
+import models.Person;
+import views.showConsole;
+
 public class MetodosBusquedaBinaria {
     private Person[] people;
-    private ShowConsole pantalla;
+    private showConsole pantalla;
 
     public MetodosBusquedaBinaria(Person[] people) {
         this.people = people;
-        this.pantalla = new ShowConsole();
+        this.pantalla = new showConsole();
         pantalla.showMessage("Metodo busqueda binaria");
     }
 
@@ -28,26 +32,32 @@ public class MetodosBusquedaBinaria {
     }
 
     public void showPersonByName() {
-        String codeToFind = pantalla.inputName();
-        int indexPerson = findPersonByCode(codeToFind);
-
-        if (indexPerson == -1) {
-            pantalla.showMessage("Persona con codigo " + codeToFind + " encontrada.");
+        String nameToFind = pantalla.inputName();
+        int indexPerson = findPersonByName(nameToFind);
+    
+        if (indexPerson != -1) {
+            pantalla.showMessage("Persona con nombre " + nameToFind + " encontrada.");
             pantalla.showMessage(people[indexPerson].toString());
         } else {
             pantalla.showMessage("Persona no encontrada.");
         }
     }
-
-    private int findPersonByName(String name) {
-        if (people[0].getame().equals(name)) {
-            return 0;
-        }
-        if (people[0].getame().compareTo(name) > 0) {
-            return 1;
-        }
-        
-    }
-
     
+    private int findPersonByName(String name) {
+        int bajo = 0;
+        int alto = people.length - 1;
+    
+        while (alto >= bajo) {
+            int central = bajo + (alto - bajo) / 2;
+            int comparisonResult = people[central].getName().compareTo(name);
+            if (comparisonResult == 0) {
+                return central;
+            } else if (comparisonResult < 0) {
+                bajo = central + 1;
+            } else {
+                alto = central - 1;
+            }
+        }
+        return -1;
+    }
 }
